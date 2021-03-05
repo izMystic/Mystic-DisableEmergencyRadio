@@ -1,6 +1,5 @@
 Citizen.CreateThread(function()
     while true do
-        CleanupSounds()
         local playerped = GetPlayerPed(-1)
         if IsPedInAnyVehicle(playerped, false) then
             local veh = GetVehiclePedIsUsing(playerped)
@@ -11,5 +10,12 @@ Citizen.CreateThread(function()
                 end
             end
         end
+        for i = 1, 12 do
+            EnableDispatchService(i, false)
+        end
+        SetPlayerWantedLevel(PlayerId(), 0, false)
+        SetPlayerWantedLevelNow(PlayerId(), false)
+        SetPlayerWantedLevelNoDrop(PlayerId(), 0, false)
+        Citizen.Wait(0)
     end
 end)
